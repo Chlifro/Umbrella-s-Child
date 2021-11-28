@@ -178,14 +178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1329531631448611258, guid: 6158b31e8d30a1540bd9b2878899d1ec, type: 3}
-      propertyPath: m_SortingLayer
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329531631448611258, guid: 6158b31e8d30a1540bd9b2878899d1ec, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6158b31e8d30a1540bd9b2878899d1ec, type: 3}
 --- !u!223 &391382344 stripped
@@ -294,6 +286,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7812752158366791966, guid: 54cad7682336f60479805fc4b9368f38, type: 3}
+      propertyPath: levelHard
+      value: 
+      objectReference: {fileID: 8059881617072431357, guid: 208da34c44a96154fbfe2ce25614987b, type: 3}
+    - target: {fileID: 7812752158366791966, guid: 54cad7682336f60479805fc4b9368f38, type: 3}
       propertyPath: gameCanvas
       value: 
       objectReference: {fileID: 544518364}
@@ -379,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6920333319459633526, guid: 69793a8bb30a5fe41beecaed0fdf7489, type: 3}
       propertyPath: allTheLevelBlocks.Array.size
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6920333319459633526, guid: 69793a8bb30a5fe41beecaed0fdf7489, type: 3}
       propertyPath: currentLevelBlocks.Array.size
@@ -397,6 +393,26 @@ PrefabInstance:
       propertyPath: allTheLevelBlocks.Array.data[2]
       value: 
       objectReference: {fileID: 8059881617072431357, guid: 79d05d1115edd91489fbbb6e977ebde2, type: 3}
+    - target: {fileID: 6920333319459633526, guid: 69793a8bb30a5fe41beecaed0fdf7489, type: 3}
+      propertyPath: allTheLevelBlocks.Array.data[3]
+      value: 
+      objectReference: {fileID: 8059881617072431357, guid: d6418be4dd1d21c4085860dceb475532, type: 3}
+    - target: {fileID: 6920333319459633526, guid: 69793a8bb30a5fe41beecaed0fdf7489, type: 3}
+      propertyPath: allTheLevelBlocks.Array.data[4]
+      value: 
+      objectReference: {fileID: 8059881617072431357, guid: 11d9e4494d836604dac99c88c3ab0d83, type: 3}
+    - target: {fileID: 6920333319459633526, guid: 69793a8bb30a5fe41beecaed0fdf7489, type: 3}
+      propertyPath: allTheLevelBlocks.Array.data[5]
+      value: 
+      objectReference: {fileID: 8059881617072431357, guid: 4d508e3b0f6f0ee46a6c57fd737ceee5, type: 3}
+    - target: {fileID: 6920333319459633526, guid: 69793a8bb30a5fe41beecaed0fdf7489, type: 3}
+      propertyPath: allTheLevelBlocks.Array.data[6]
+      value: 
+      objectReference: {fileID: 8059881617072431357, guid: e30b5efed200d1d4c902db1bf61ea4c6, type: 3}
+    - target: {fileID: 6920333319459633526, guid: 69793a8bb30a5fe41beecaed0fdf7489, type: 3}
+      propertyPath: allTheLevelBlocks.Array.data[7]
+      value: 
+      objectReference: {fileID: 8059881617072431357, guid: 208da34c44a96154fbfe2ce25614987b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69793a8bb30a5fe41beecaed0fdf7489, type: 3}
 --- !u!1 &1405775111
@@ -476,112 +492,11 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 8887140557223691167, guid: fadccd0c35e7be943b7e47c7238532fa, type: 3}
   m_PrefabInstance: {fileID: 8887140558381090517}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1774401634 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1127218144148148839, guid: 6158b31e8d30a1540bd9b2878899d1ec, type: 3}
-  m_PrefabInstance: {fileID: 180692571}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2038353496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1055268272960338904, guid: 6158b31e8d30a1540bd9b2878899d1ec, type: 3}
   m_PrefabInstance: {fileID: 180692571}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &2038353503
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774401634}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ab905f53d17741f4fa3c9eaec6fa3031, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &664838494483604193
 PrefabInstance:
   m_ObjectHideFlags: 0

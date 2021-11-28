@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     
     public float initialRunningSpeed = 2.0f;
+    public float currentRunningSpeed = 2.0f;
     public float jumpForce = 20.0f;
     private Rigidbody2D _rigidbody2D;
     public LayerMask LayerMaskGround;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController sharedInstance;
     private Vector3 startPosition;
     public float distanceTravelled = 0;
+    public bool inSnowyFloor = false;
     
     private void Awake()
     {
@@ -60,10 +62,16 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.sharedInstance.currentGameState == GameState.inTheGame)
         {
-            if (_rigidbody2D.velocity.x < runningSpeed)
+            if (!inSnowyFloor)
             {
                 _rigidbody2D.velocity = new Vector2(runningSpeed, _rigidbody2D.velocity.y);
-            } 
+                GetComponent<SpriteRenderer>().color=Color.white;
+            }
+            else
+            {
+                _rigidbody2D.velocity = new Vector2(runningSpeed/2, _rigidbody2D.velocity.y);
+                GetComponent<SpriteRenderer>().color=Color.cyan;
+            }
         }
         
     }
@@ -94,9 +102,8 @@ public class PlayerController : MonoBehaviour
 
     public void KillPlayer()
     {
-        animator.SetBool("isAlive",false);
         Invoke("SleepPlayer",1f);
-        
+        animator.SetBool("isAlive",false);
         if(PlayerPrefs.GetFloat("highscore",0)<GetDistanceTravelled())
         {
             PlayerPrefs.SetFloat("highscore",distanceTravelled);
@@ -108,7 +115,8 @@ public class PlayerController : MonoBehaviour
 
     public void SleepPlayer()
     {
-        GetComponent<Rigidbody2D>().Sleep();
+        this.GetComponent<Rigidbody>().useGravity = false;
+        this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GameManager.sharedInstance.GameOver();
     }
 
@@ -116,5 +124,22 @@ public class PlayerController : MonoBehaviour
     {
         this.runningSpeed += 0.5f;
         this._rigidbody2D.gravityScale += 0.025f;
+    }
+
+    public void Hitted()
+    { 
+        
+        KillPlayer();
+        Debug.Log("Has sido golepado");
+        if (GameManager.sharedInstance.collectedCoins == 0)
+        {
+            
+        }
+        else
+        {
+            GameManager.sharedInstance.collectedCoins = 0;
+        }
+        //animator.SetBool("isAlive",false);
+        //animator.SetBool("isAlive",true);
     }
 }

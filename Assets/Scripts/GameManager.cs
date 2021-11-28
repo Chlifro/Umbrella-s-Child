@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         //Debug.Log((int)PlayerController.sharedInstance.distanceTravelled);
-        if ((int)PlayerController.sharedInstance.distanceTravelled == (lvFinalAdded * 100))
+        if ((int)PlayerController.sharedInstance.distanceTravelled == (lvFinalAdded * 50))
         {
             if (LevelGenerator.sharedInstance.allTheLevelBlocks.Count <= 20)
             {
