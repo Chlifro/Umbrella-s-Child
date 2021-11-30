@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartGame()
     {
+        _rigidbody2D.constraints = RigidbodyConstraints2D.None;
         animator.SetBool("isAlive",true);
         this.transform.position = startPosition;
         runningSpeed = initialRunningSpeed;
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+        
     }
 
     public float GetDistanceTravelled()
@@ -108,22 +110,35 @@ public class PlayerController : MonoBehaviour
         {
             PlayerPrefs.SetFloat("highscore",distanceTravelled);
         }
+
         
-       
-       
+
+
     }
 
     public void SleepPlayer()
     {
-        this.GetComponent<Rigidbody>().useGravity = false;
-        this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        
         GameManager.sharedInstance.GameOver();
+        Debug.Log("Has sido golpeado");
+
+        this.transform.position = startPosition;
+        _rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+        
+        //this.GetComponent<SpriteRenderer>().enabled = false;
+
+        //_rigidbody2D.Sleep();
+
+        //_rigidbody2D.velocity = Vector2.zero;
+        //this._rigidbody2D.angularVelocity = 0f;
+
+
     }
 
     public void increaseVelocityGravity()
     {
         this.runningSpeed += 0.5f;
-        this._rigidbody2D.gravityScale += 0.025f;
+        this._rigidbody2D.gravityScale += 0.0025f;
     }
 
     public void Hitted()
