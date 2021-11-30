@@ -12,8 +12,13 @@ public class KillTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //AudioSource.PlayClipAtPoint(hitSound,transform.position);
+            AudioSource.PlayClipAtPoint(hitSound,transform.position);
             PlayerController.sharedInstance.KillPlayer();
+        }
+
+        if (other.CompareTag("Enemy"))
+        {
+            Destroy(other);
         }
     }
 }

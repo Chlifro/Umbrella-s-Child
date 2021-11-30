@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 startPosition;
     public float distanceTravelled = 0;
     public bool inSnowyFloor = false;
+    public bool hasInvencivility = false;
+    public GameObject elipseInvencivility;
     
     private void Awake()
     {
@@ -57,6 +59,8 @@ public class PlayerController : MonoBehaviour
                 }
             }  
         }
+
+        elipseInvencivility.GetComponent<SpriteRenderer>().enabled = hasInvencivility;
     }
 
     private void FixedUpdate()

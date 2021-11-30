@@ -9,9 +9,20 @@ public class EnemyTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("entra");
-            //AudioSource.PlayClipAtPoint(hitSound,transform.position);
-            PlayerController.sharedInstance.KillPlayer();
+            if (GameManager.sharedInstance.collectedCoins == 0)
+            {
+                if (!PlayerController.sharedInstance.hasInvencivility)
+                {
+                    PlayerController.sharedInstance.KillPlayer();    
+                }
+                    
+            }
+            else
+            {
+                GameManager.sharedInstance.collectedCoins = 0;
+                UpdateGameCanvas.sharedInstance.SetCoinsNumber();
+            }
+            
         }
     }
 }
