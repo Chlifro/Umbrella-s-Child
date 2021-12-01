@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public bool inSnowyFloor = false;
     public bool hasInvencivility = false;
     public GameObject elipseInvencivility;
+    public int saltosRealizados = 0;
+    public int maxVelocityY = 10;
     
     private void Awake()
     {
@@ -47,16 +49,28 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(this._rigidbody2D.velocity.y);
         if (GameManager.sharedInstance.currentGameState == GameState.inTheGame)
         {
             animator.SetBool("isGrounded",isOnTheFloor());
             if (Input.GetButtonDown("Fire1"))
             {
-                if (isOnTheFloor())
+
+                if (hasInvencivility)
+                {
+                    if (saltosRealizados < 2)
+                    {
+                        Jump();
+                        saltosRealizados++;
+                    }
+                    Debug.Log(saltosRealizados);
+                }
+                else if (isOnTheFloor())
                 {
                     Jump();
                     GetComponent<AudioSource>().Play();
                 }
+                
             }  
         }
 
@@ -65,6 +79,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(_rigidbody2D.velocity.magnitude > maxVelocityY)
+        {
+            _rigidbody2D.velocity = _rigidbody2D.velocity.normalized * maxVelocityY;
+        }
         if (GameManager.sharedInstance.currentGameState == GameState.inTheGame)
         {
             if (!inSnowyFloor)
@@ -97,6 +115,8 @@ public class PlayerController : MonoBehaviour
         if(Physics2D.Raycast(this.transform.position, Vector2.down, 1.0f,LayerMaskGround.value))
         {
             isOnTheFloor = true;
+            saltosRealizados = 0;
+            Debug.Log("IsInFloor");
         }
         return isOnTheFloor;
     }
@@ -104,6 +124,7 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         _rigidbody2D.AddForce(Vector2.up*jumpForce,ForceMode2D.Impulse);
+        
     }
 
     public void KillPlayer()
@@ -160,5 +181,10 @@ public class PlayerController : MonoBehaviour
         }
         //animator.SetBool("isAlive",false);
         //animator.SetBool("isAlive",true);
+    }
+
+    public void ChangeState()
+    {
+        PlayerController.sharedInstance.animator.SetBool("isAlive",true);
     }
 }

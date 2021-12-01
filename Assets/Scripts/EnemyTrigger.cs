@@ -7,22 +7,30 @@ public class EnemyTrigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!PlayerController.sharedInstance.hasInvencivility)
         {
-            if (GameManager.sharedInstance.collectedCoins == 0)
+            if (other.CompareTag("Player"))
             {
-                if (!PlayerController.sharedInstance.hasInvencivility)
-                {
-                    PlayerController.sharedInstance.KillPlayer();    
+                if (GameManager.sharedInstance.collectedCoins == 0)
+                { 
+                    PlayerController.sharedInstance.KillPlayer();
                 }
-                    
-            }
-            else
-            {
-                GameManager.sharedInstance.collectedCoins = 0;
-                UpdateGameCanvas.sharedInstance.SetCoinsNumber();
-            }
+                else
+                {
+                    PlayerController.sharedInstance.animator.SetBool("isAlive",false);
+                    GameManager.sharedInstance.collectedCoins = 0;
+                    UpdateGameCanvas.sharedInstance.SetCoinsNumber();
+                    Invoke("Hitted",1.0f);
+                    //PlayerController.sharedInstance.animator.SetBool("isAlive",true);
+                }
             
+            }
         }
     }
+    
+    public void Hitted()
+    {
+        PlayerController.sharedInstance.ChangeState();
+    }
+    
 }

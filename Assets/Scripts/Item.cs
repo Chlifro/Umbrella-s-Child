@@ -5,14 +5,31 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    public enum ItemsType
+    {
+        Coin,
+        StarPower
+    }
+
+    public ItemsType itemType;
     public AudioClip itemSound;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            GameManager.sharedInstance.CollectCoin();
-            AudioSource.PlayClipAtPoint(itemSound,gameObject.transform.position);
-            Destroy(gameObject); 
+            if (itemType == ItemsType.Coin)
+            {
+                GameManager.sharedInstance.CollectCoin();
+                AudioSource.PlayClipAtPoint(itemSound,gameObject.transform.position);
+                Destroy(gameObject);     
+            }
+
+            if (itemType == ItemsType.StarPower)
+            {
+                //PlayerController.sharedInstance.active;
+                Destroy(gameObject);     
+            }
+            
         }
        
     }
