@@ -386,9 +386,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7812752158366791966, guid: 54cad7682336f60479805fc4b9368f38, type: 3}
-      propertyPath: levelHard
+      propertyPath: starItem
       value: 
-      objectReference: {fileID: 8059881617072431357, guid: 208da34c44a96154fbfe2ce25614987b, type: 3}
+      objectReference: {fileID: 5317203654942839602, guid: fd77ece85e5bd5a46b76c0a9fa0d9298, type: 3}
     - target: {fileID: 7812752158366791966, guid: 54cad7682336f60479805fc4b9368f38, type: 3}
       propertyPath: gameCanvas
       value: 
