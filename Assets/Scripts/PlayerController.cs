@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour
     public GameObject elipseInvencivility;
     public int saltosRealizados = 0;
     public int maxVelocityY = 10;
-    
+
+
+    public int initialPointsSuperPower = 0;
     private void Awake()
     {
         sharedInstance = this;
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(this._rigidbody2D.velocity.y);
+        
         if (GameManager.sharedInstance.currentGameState == GameState.inTheGame)
         {
             animator.SetBool("isGrounded",isOnTheFloor());
@@ -72,6 +74,11 @@ public class PlayerController : MonoBehaviour
                 }
                 
             }  
+        }
+
+        if ((int) distanceTravelled - initialPointsSuperPower >= 100)
+        {
+            hasInvencivility = false;
         }
 
         elipseInvencivility.GetComponent<SpriteRenderer>().enabled = hasInvencivility;
@@ -116,7 +123,7 @@ public class PlayerController : MonoBehaviour
         {
             isOnTheFloor = true;
             saltosRealizados = 0;
-            Debug.Log("IsInFloor");
+            
         }
         return isOnTheFloor;
     }
@@ -163,7 +170,7 @@ public class PlayerController : MonoBehaviour
     public void increaseVelocityGravity()
     {
         this.runningSpeed += 0.5f;
-        this._rigidbody2D.gravityScale += 0.0025f;
+        this._rigidbody2D.gravityScale += 0.00025f;
     }
 
     public void Hitted()
@@ -186,5 +193,11 @@ public class PlayerController : MonoBehaviour
     public void ChangeState()
     {
         PlayerController.sharedInstance.animator.SetBool("isAlive",true);
+    }
+
+    public void activateSuperPower()
+    {
+        hasInvencivility = true;
+        initialPointsSuperPower = (int) distanceTravelled;
     }
 }

@@ -27,6 +27,7 @@ public class Item : MonoBehaviour
             if (itemType == ItemsType.StarPower)
             {
                 //PlayerController.sharedInstance.active;
+                PlayerController.sharedInstance.activateSuperPower();
                 Destroy(gameObject);     
             }
             

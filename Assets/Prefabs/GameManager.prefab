@@ -49,3 +49,4 @@ MonoBehaviour:
   gameCanvas: {fileID: 0}
   gameOverCanvas: {fileID: 0}
   collectedCoins: 0
+  levelHard: {fileID: 8059881617072431357, guid: 208da34c44a96154fbfe2ce25614987b, type: 3}

@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour
     public int collectedCoins = 0;
     private int lvFinalAdded = 1;
     public LevelBlock levelHard;
-    
+
+    public GameObject starItem;
+    public int starsAdded = 1;
     private void Awake()
     {
         sharedInstance = this;
@@ -51,6 +53,17 @@ public class GameManager : MonoBehaviour
             }
 
             PlayerController.sharedInstance.increaseVelocityGravity();
+        }
+
+        if (((int) PlayerController.sharedInstance.distanceTravelled != 0)&&
+            ((int)PlayerController.sharedInstance.distanceTravelled % (30*starsAdded) == 0))
+        {
+            GameObject starItemAdd = Instantiate(starItem);
+            starItemAdd.transform.position = new Vector2(
+                PlayerController.sharedInstance.transform.position.x+10f
+                ,PlayerController.sharedInstance.transform.position.y);
+            starItemAdd.transform.parent = LevelGenerator.sharedInstance.currentLevelBlocks[LevelGenerator.sharedInstance.currentLevelBlocks.Count - 1].transform;
+            starsAdded++;
         }
     }
 
