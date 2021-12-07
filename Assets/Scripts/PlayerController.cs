@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartGame()
     {
+        this.inSnowyFloor = false;
         _rigidbody2D.constraints = RigidbodyConstraints2D.None;
         animator.SetBool("isAlive",true);
         this.transform.position = startPosition;
@@ -119,13 +120,14 @@ public class PlayerController : MonoBehaviour
     {
         bool isOnTheFloor = false;
         
-        if(Physics2D.Raycast(this.transform.position, Vector2.down, 1.0f,LayerMaskGround.value))
+        if(Physics2D.Raycast(this.transform.position, Vector2.down, 2f,LayerMaskGround.value))
         {
             isOnTheFloor = true;
             saltosRealizados = 0;
             
         }
         return isOnTheFloor;
+        //return true;
     }
 
     public void Jump()

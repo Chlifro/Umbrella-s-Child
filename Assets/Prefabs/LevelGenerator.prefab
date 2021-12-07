@@ -48,4 +48,11 @@ MonoBehaviour:
   allTheLevelBlocks:
   - {fileID: 8059881617072431357, guid: 38836eb15d8a4eb438fc27cfcf5eb54a, type: 3}
   - {fileID: 6398479399767438099, guid: 13dc7ce3bac470f45a84153bffc4fa15, type: 3}
+  - {fileID: 8059881617072431357, guid: 79d05d1115edd91489fbbb6e977ebde2, type: 3}
+  - {fileID: 8059881617072431357, guid: d6418be4dd1d21c4085860dceb475532, type: 3}
+  - {fileID: 8059881617072431357, guid: 11d9e4494d836604dac99c88c3ab0d83, type: 3}
+  - {fileID: 8059881617072431357, guid: 4d508e3b0f6f0ee46a6c57fd737ceee5, type: 3}
+  - {fileID: 8059881617072431357, guid: e30b5efed200d1d4c902db1bf61ea4c6, type: 3}
+  - {fileID: 8059881617072431357, guid: 208da34c44a96154fbfe2ce25614987b, type: 3}
   levelInitialPoint: {fileID: 7509282905484136853, guid: bab5c798ae3957b488d9657fa9dd2c4e, type: 3}
+  isGeneratingInitialBlocks: 0

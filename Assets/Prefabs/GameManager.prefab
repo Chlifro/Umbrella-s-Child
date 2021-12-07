@@ -50,3 +50,5 @@ MonoBehaviour:
   gameOverCanvas: {fileID: 0}
   collectedCoins: 0
   levelHard: {fileID: 8059881617072431357, guid: 208da34c44a96154fbfe2ce25614987b, type: 3}
+  starItem: {fileID: 5317203654942839602, guid: fd77ece85e5bd5a46b76c0a9fa0d9298, type: 3}
+  starsAdded: 1
