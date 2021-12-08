@@ -1980,6 +1980,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1130675741}
+    - target: {fileID: 170726218, guid: 0ce7424b791d47a42bece71d60f62c11, type: 3}
+      propertyPath: m_Text
+      value: 'Pause
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030383191644412689, guid: 0ce7424b791d47a42bece71d60f62c11, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1030383191644412691, guid: 0ce7424b791d47a42bece71d60f62c11, type: 3}
       propertyPath: m_Name
       value: GameCanvas
@@ -2230,6 +2240,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2724117235265862039, guid: e062ce7dc46363742ba03975baaed255, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2724117235817732867, guid: e062ce7dc46363742ba03975baaed255, type: 3}
       propertyPath: m_Text
       value: PLAY
@@ -2386,6 +2400,10 @@ PrefabInstance:
     - target: {fileID: 8779421895536302211, guid: a8404c6c9b13c534aa9b29512a93143f, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779421895536302220, guid: a8404c6c9b13c534aa9b29512a93143f, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8779421895536302222, guid: a8404c6c9b13c534aa9b29512a93143f, type: 3}
       propertyPath: m_Name
