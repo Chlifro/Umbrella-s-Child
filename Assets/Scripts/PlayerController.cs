@@ -21,11 +21,14 @@ public class PlayerController : MonoBehaviour
     public GameObject elipseInvencivility;
     public int saltosRealizados = 0;
     public int maxVelocityY = 10;
+    public ParticleSystem particulasMonedas;
+    public AudioClip playerCoins,superPower;
 
 
     public int initialPointsSuperPower = 0;
     private void Awake()
     {
+        particulasMonedas.Stop();
         sharedInstance = this;
         startPosition = this.transform.position;
         this._rigidbody2D = GetComponent<Rigidbody2D>();
@@ -80,6 +83,8 @@ public class PlayerController : MonoBehaviour
         if ((int) distanceTravelled - initialPointsSuperPower >= 100)
         {
             hasInvencivility = false;
+            GameManager.sharedInstance.gameCanvas.GetComponent<AudioSource>().UnPause();
+            
         }
 
         elipseInvencivility.GetComponent<SpriteRenderer>().enabled = hasInvencivility;
@@ -179,7 +184,6 @@ public class PlayerController : MonoBehaviour
     { 
         
         KillPlayer();
-        Debug.Log("Has sido golepado");
         if (GameManager.sharedInstance.collectedCoins == 0)
         {
             
@@ -201,5 +205,11 @@ public class PlayerController : MonoBehaviour
     {
         hasInvencivility = true;
         initialPointsSuperPower = (int) distanceTravelled;
+        
+        GameManager.sharedInstance.gameCanvas.GetComponent<AudioSource>().Pause();
+        AudioSource.PlayClipAtPoint(superPower,this.transform.position);
+        
     }
+
+ 
 }

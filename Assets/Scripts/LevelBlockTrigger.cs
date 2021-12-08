@@ -7,8 +7,11 @@ public class LevelBlockTrigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        LevelGenerator.sharedInstance.AddNewBlock();
-        LevelGenerator.sharedInstance.RemoveOldBlock();
+        if (other.CompareTag("Player"))
+        {
+            LevelGenerator.sharedInstance.AddNewBlock();
+            LevelGenerator.sharedInstance.RemoveOldBlock();
+        }
     }
 
     // Start is called before the first frame update

@@ -70,8 +70,8 @@ public class LevelGenerator : MonoBehaviour
         else
         {
             blockPosition = currentLevelBlocks[currentLevelBlocks.Count - 1].exitPoint.position;
-        }   
-
+        }
+        
         block.transform.position = blockPosition;
         
         currentLevelBlocks.Add(block);

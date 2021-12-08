@@ -11,7 +11,6 @@ public class EnemyTrigger : MonoBehaviour
     public bool staticEnemy;
     public float runningSpeed = 1f;
 
-
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -29,10 +28,12 @@ public class EnemyTrigger : MonoBehaviour
                 }
                 else
                 {
+                    AudioSource.PlayClipAtPoint(PlayerController.sharedInstance.playerCoins,PlayerController.sharedInstance.transform.position);
                     PlayerController.sharedInstance.animator.SetBool("isAlive",false);
+                    PlayerController.sharedInstance.particulasMonedas.Play();
                     GameManager.sharedInstance.collectedCoins = 0;
                     UpdateGameCanvas.sharedInstance.SetCoinsNumber();
-                    Invoke("Hitted",1.0f);
+                    Invoke("Hitted",0.5f);
                     //PlayerController.sharedInstance.animator.SetBool("isAlive",true);
                 }
             
@@ -50,6 +51,7 @@ public class EnemyTrigger : MonoBehaviour
     public void Hitted()
     {
         PlayerController.sharedInstance.ChangeState();
+        PlayerController.sharedInstance.particulasMonedas.Stop();
     }
 
     private void FixedUpdate()

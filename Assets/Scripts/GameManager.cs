@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum GameState
 {
     menu,
     inTheGame,
-    gameOver
+    gameOver,
+    pause
 }
 
 public class GameManager : MonoBehaviour
@@ -18,12 +20,16 @@ public class GameManager : MonoBehaviour
     public Canvas menuCanvas;
     public Canvas gameCanvas;
     public Canvas gameOverCanvas;
+    public Canvas pauseCanvas;
     public int collectedCoins = 0;
     private int lvFinalAdded = 1;
     public LevelBlock levelHard;
 
     public GameObject starItem;
     public int starsAdded = 1;
+
+    public Button buttonPause;
+    public bool pause = false;
     private void Awake()
     {
         sharedInstance = this;
@@ -56,14 +62,16 @@ public class GameManager : MonoBehaviour
         }
 
         if (((int) PlayerController.sharedInstance.distanceTravelled != 0)&&
-            ((int)PlayerController.sharedInstance.distanceTravelled % (30*starsAdded) == 0))
+            ((int)PlayerController.sharedInstance.distanceTravelled % (200*starsAdded) == 0))
         {
+            //DESCOMENTAR , GENERADOR DE ESTRELLAS
             GameObject starItemAdd = Instantiate(starItem);
             starItemAdd.transform.position = new Vector2(
                 PlayerController.sharedInstance.transform.position.x+10f
                 ,PlayerController.sharedInstance.transform.position.y);
             starItemAdd.transform.parent = LevelGenerator.sharedInstance.currentLevelBlocks[LevelGenerator.sharedInstance.currentLevelBlocks.Count - 1].transform;
             starsAdded++;
+            
         }
     }
 
@@ -107,6 +115,7 @@ public class GameManager : MonoBehaviour
             menuCanvas.enabled = true;
             gameCanvas.enabled = false;
             gameOverCanvas.enabled = false;
+            pauseCanvas.enabled = false;
             
             menuCanvas.GetComponent<AudioSource>().Play();
             gameCanvas.GetComponent<AudioSource>().Stop();
@@ -119,6 +128,7 @@ public class GameManager : MonoBehaviour
             menuCanvas.enabled = false;
             gameCanvas.enabled = false;
             gameOverCanvas.enabled = true;
+            pauseCanvas.enabled = false;
             currentGameState = GameState.gameOver;
             
             menuCanvas.GetComponent<AudioSource>().Stop();
@@ -130,11 +140,41 @@ public class GameManager : MonoBehaviour
             menuCanvas.enabled = false;
             gameOverCanvas.enabled = false;
             gameCanvas.enabled = true;
+            pauseCanvas.enabled = false;
             currentGameState = GameState.inTheGame;
             
             menuCanvas.GetComponent<AudioSource>().Stop();
             gameCanvas.GetComponent<AudioSource>().Play();
             gameOverCanvas.GetComponent<AudioSource>().Stop();
         }
+        else if (newGameState == GameState.pause)
+        {  
+            menuCanvas.enabled = false;
+            gameOverCanvas.enabled = false;
+            gameCanvas.enabled = false;
+            pauseCanvas.enabled = true;
+            currentGameState = GameState.pause;
+            
+            menuCanvas.GetComponent<AudioSource>().Stop();
+            gameCanvas.GetComponent<AudioSource>().Pause();
+            gameOverCanvas.GetComponent<AudioSource>().Stop();
+        }
     }
+
+    public void PauseRestart()
+    {
+        
+        pause = !pause;
+        if (pause)
+        {
+            Time.timeScale = 0;
+            ChangeGameState(GameState.pause);
+        }
+        else
+        {
+            ChangeGameState(GameState.inTheGame);
+            Time.timeScale = 1;
+        }
+        //Debug.Log(pause);
+    } 
 }

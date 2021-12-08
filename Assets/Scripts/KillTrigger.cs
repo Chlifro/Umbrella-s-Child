@@ -16,9 +16,6 @@ public class KillTrigger : MonoBehaviour
             PlayerController.sharedInstance.KillPlayer();
         }
 
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(other);
-        }
+        
     }
 }
