@@ -11,6 +11,7 @@ public class ParallaxEffect : MonoBehaviour
     private float spriteWidth;
 
     private float starPosition;
+    private float initPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class ParallaxEffect : MonoBehaviour
         previousCameraPosition = cameraTransform.position;
         spriteWidth = GetComponent<SpriteRenderer>().bounds.size.x;
         starPosition = transform.position.x;
+        initPosition = transform.position.x;
     }
 
     // Update is called once per frame
@@ -27,12 +29,20 @@ public class ParallaxEffect : MonoBehaviour
         float moveAmount = cameraTransform.position.x * (1 - parallaxMultipler);
         transform.Translate(new Vector3(deltaX,0,0));
         previousCameraPosition = cameraTransform.position;
-
+    
+        
         if (moveAmount > starPosition + spriteWidth)
         {
+            
             transform.Translate(new Vector3( spriteWidth,0,0));
             starPosition += spriteWidth;
         }
         
+    }
+
+    public void ResetPosition()
+    {
+        Debug.Log("RESET");
+        transform.Translate(new Vector3((cameraTransform.transform.position.x - previousCameraPosition.x)*parallaxMultipler,0,0));
     }
 }

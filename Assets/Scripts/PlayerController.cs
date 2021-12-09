@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public float runningSpeed = 2.0f;
     public static PlayerController sharedInstance;
-    private Vector3 startPosition;
+    public Vector3 startPosition;
     public float distanceTravelled = 0;
     public bool inSnowyFloor = false;
     public bool hasInvencivility = false;
@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
 
     public void KillPlayer()
     {
+        
         Invoke("SleepPlayer",1f);
         animator.SetBool("isAlive",false);
         if(PlayerPrefs.GetFloat("highscore",0)<GetDistanceTravelled())

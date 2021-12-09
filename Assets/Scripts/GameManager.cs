@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public Button buttonPause;
     public bool pause = false;
+
+    public List<ParallaxEffect> listParallax;
     private void Awake()
     {
         sharedInstance = this;
@@ -88,6 +90,11 @@ public class GameManager : MonoBehaviour
         collectedCoins = 0;
         UpdateGameCanvas.sharedInstance.SetCoinsNumber();
         ChangeGameState(GameState.inTheGame);
+        
+        foreach (var parallax in GameManager.sharedInstance.listParallax)
+        {
+            parallax.ResetPosition();
+        }
     }
    
     public void GameOver()
