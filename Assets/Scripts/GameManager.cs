@@ -79,6 +79,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if ((Input.GetButtonDown("Submit") && (currentGameState != GameState.inTheGame)))
+        {
+            StartGame();
+        }
         
     }
    
